@@ -16,7 +16,7 @@ export class AttachmentUtils {
 
     ) {}
 
-    async generateUploadUrl(todoId: string, userId: string): Promise <string>{
+    async createAttachmentPresignedUrl(todoId: string, userId: string): Promise <string>{
         const uploadUrl = this.s3.getSignedUrl("putObject", {
             Bucket: this.bucketName,
             Key: todoId,

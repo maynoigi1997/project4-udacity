@@ -1,13 +1,10 @@
 import { TodosAccess } from './todosAcess'
-import { AttachmentUtils } from './attachmentUtils';
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 import * as uuid from 'uuid'
 
 // TODO: Implement businessLogic
 const todoAccess = new TodosAccess();
-
-const attachmentUtils = new AttachmentUtils();
 
 export async function createTodo(newTodo: CreateTodoRequest, userId: string) {
     const todoId = uuid.v4();
@@ -30,9 +27,6 @@ export async function deleteTodo(todoId: string, userId: string){
     return todoAccess.deleteTodo(todoId, userId)
 } 
 
-export async function getUploadUrl(todoId: string, userId: string){
-    return attachmentUtils.generateUploadUrl(todoId, userId)
-}
 export async function getTodos(userId: string) {
     return todoAccess.getTodos(userId)
 }
