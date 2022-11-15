@@ -14,7 +14,7 @@ provider:
   profile: serverless
 
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'ap-southeast-1'}
+  region: ${opt:region, 'us-east-1'}
 
   tracing:
     lambda: true
@@ -229,7 +229,6 @@ resources:
         NotificationConfiguration: 
           LambdaConfigurations:
             - Event: s3:ObjectCreated:*
-              Function: !GetAtt SendUploadNotificationsLambdaFunction.Arn
         #   TopicConfigurations:
         #     - Event: s3:ObjectCreated:Put
         #       Topic: !Ref ImagesTopic
