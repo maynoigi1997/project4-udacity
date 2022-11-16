@@ -63,7 +63,7 @@ async function verifyToken(authHeader: string): Promise<JwtPayload> {
   const response = await Axios.get(jwksUrl)
   const data = response.data
   let cert = data['keys'][0].x5c[0]
-  cert = `---START CERTIFICATE---\n${cert}\n---COMPLETE CERTIFICATE---\n`
+  cert = `-----BEGIN CERTIFICATE---\n${cert}\n-----END CERTIFICATE-----\n`
 
   // TODO: Implement token verification
   // You should implement it similarly to how it was implemented for the exercise for the lesson 5

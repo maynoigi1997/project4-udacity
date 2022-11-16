@@ -226,9 +226,6 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
-        NotificationConfiguration: 
-          LambdaConfigurations:
-            - Event: s3:ObjectCreated:*
         #   TopicConfigurations:
         #     - Event: s3:ObjectCreated:Put
         #       Topic: !Ref ImagesTopic
