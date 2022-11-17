@@ -1,14 +1,16 @@
+import * as AWS from 'aws-sdk'
+import * as AWSXRay from 'aws-xray-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 import { TodoItem } from '../models/TodoItem'
 import { TodoUpdate } from '../models/TodoUpdate';
 
-const AWSXRay = require('aws-xray-sdk')
+const XAWS = AWSXRay.captureAWS(AWS)
 
 // TODO: Implement the dataLayer logic
 
 export class TodosAccess {
     constructor (
-        private readonly docClient: DocumentClient = new AWSXRay.DynamoDB.DocumentClient(),
+        private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
         private readonly todoTable = process.env.TODOS_TABLE,
         private readonly userIdIndex = process.env.USER_INDEX,
 
